@@ -112,6 +112,7 @@ Polymer({
       reflectToAttribute: true
     }
   },
+
   ready: function() {
     var controls = this.getElementsByClassName("controls")
     if (this.sliders) {
@@ -123,7 +124,8 @@ Polymer({
         controls[0].parentNode.removeChild(controls[0]);
       }
     }
-  }
+  },
+
   attached: function () {
     this.async(function() {
       this.style.height = this.height + "px";
