@@ -139,11 +139,10 @@ Polymer({
   onNextClicked: function (e) {
     setInterval(function() {
       this.slides[this.currentSlide].style.opacity -= .50;
-    }, 5000);
-    var nextSlide = this.getNextImage();
+    }.bind(this), 5000);
     setInterval(function() {
       this.getNextImage().style.opacity += .50;
-    }, 5000);
+    }.bind(this), 5000);
   },
 
   getNextImage: function () {
