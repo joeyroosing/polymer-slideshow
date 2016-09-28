@@ -137,16 +137,13 @@ Polymer({
   },
 
   onNextClicked: function (e) {
-    var currSlide = this.currentSlide;
     setInterval(function() {
-      currSlide.style.opacity -= .50;
-    }, 5000)
+      this.slides[this.currentSlide].style.opacity -= .50;
+    }, 5000);
     var nextSlide = this.getNextImage();
     setInterval(function() {
-      nextSlide.style.opacity += .50;
-    }, 5000)
-    //this.slides[this.currentSlide].style.opacity = 0;
-    //this.getNextImage().style.opacity = 1;
+      this.getNextImage().style.opacity += .50;
+    }, 5000);
   },
 
   getNextImage: function () {
