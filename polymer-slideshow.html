@@ -112,20 +112,22 @@ Polymer({
       reflectToAttribute: true
     }
   },
+  ready: function() {
+    var controls = this.getElementsByClassName("controls")
+    if (this.sliders) {
+      for (var i = 0; i < controls.length; i++) {
+        controls[i].style.lineHeight=this.height+"px";
+      }
+    } else {
+      while (controls.length > 0) {
+        controls[0].parentNode.removeChild(controls[0]);
+      }
+    }
+  }
   attached: function () {
     this.async(function() {
       this.style.height = this.height + "px";
       this.style.width = this.width + "px";
-      var controls = this.getElementsByClassName("controls")
-      if (this.sliders) {
-        for (var i = 0; i < controls.length; i++) {
-          controls[i].style.lineHeight=this.height+"px";
-        }
-      } else {
-        while (controls.length > 0) {
-          controls[0].parentNode.removeChild(controls[0]);
-        }
-      }
       this.slides = Polymer.dom(this).querySelectorAll("polymer-slide");
       if (this.slides.length >= 0) {
         this.slides[0].style.opacity = 1;
