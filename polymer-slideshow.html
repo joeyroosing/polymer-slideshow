@@ -114,10 +114,8 @@ Polymer({
   },
 
   ready: function() {
-    var controlNext = this.$.controlNext
-    var controlPrev = this.$.controlPrev;
-    controlNext.style.lineHeight = this.height + "px";
-    controlPrev.style.lineHeight = this.width + "px";
+    this.$.controlNext.style.lineHeight = this.height + "px";
+    this.$.controlPrev.style.lineHeight = this.height + "px";
   },
 
   attached: function () {
