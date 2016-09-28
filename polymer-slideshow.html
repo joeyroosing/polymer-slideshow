@@ -135,18 +135,30 @@ Polymer({
       }
     });
   },
+
   onNextClicked: function (e) {
-    this.slides[this.currentSlide].style.opacity = 0;
-    this.getNextImage().style.opacity = 1;
+    var currSlide = this.currentSlide;
+    setInterval(function() {
+      currSlide.style.opacity -= .50;
+    }, 5000)
+    var nextSlide = this.getNextImage();
+    setInterval(function() {
+      nextSlide.style.opacity += .50;
+    }, 5000)
+    //this.slides[this.currentSlide].style.opacity = 0;
+    //this.getNextImage().style.opacity = 1;
   },
+
   getNextImage: function () {
     this.currentSlide = (this.currentSlide + 1) % this.slides.length;
     return this.slides[this.currentSlide];
   },
+
   onPreviousClicked: function (e) {
     this.slides[this.currentSlide].style.opacity = 0;
     this.getPreviousImage().style.opacity = 1;
   },
+
   getPreviousImage: function () {
     if (this.currentSlide - 1 < 0) {
       this.currentSlide = this.slides.length;
