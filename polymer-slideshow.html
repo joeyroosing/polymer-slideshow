@@ -76,9 +76,9 @@ polyfill-next-selector {
 </style>
 <template>
   <div id="container">
-    <div on-tap="onPreviousClicked" class="controls previous"><</div>
+    <div on-tap="onPreviousClicked" id="controlPrev" class="controls previous"><</div>
     <content select="polymer-slide"></content>
-    <div on-tap="onNextClicked" class="controls next">></div>
+    <div on-tap="onNextClicked" id="controlNext" class="controls next">></div>
   </div>
 </template>
 <script>
@@ -114,16 +114,10 @@ Polymer({
   },
 
   ready: function() {
-    var controls = this.getElementsByClassName("controls")
-    if (this.sliders) {
-      for (var i = 0; i < controls.length; i++) {
-        controls[i].style.lineHeight=this.height+"px";
-      }
-    } else {
-      while (controls.length > 0) {
-        controls[0].parentNode.removeChild(controls[0]);
-      }
-    }
+    var controlNext = this.$.controlNext
+    var controlPrev = this.$.controlPrev;
+    controlNext.style.lineHeight = this.height + "px";
+    controlPrev.style.lineHeight = this.width + "px";
   },
 
   attached: function () {
